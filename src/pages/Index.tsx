@@ -1,11 +1,13 @@
 import { useState, useMemo } from 'react';
 import { Header } from '@/components/Header';
+import { HeroSection } from '@/components/HeroSection';
 import { ProductCard } from '@/components/ProductCard';
 import { CartDrawer } from '@/components/CartDrawer';
 import { CategoryFilter } from '@/components/CategoryFilter';
 import { Checkout } from '@/components/Checkout';
 import { CartProvider } from '@/contexts/CartContext';
 import { products } from '@/data/products';
+import { Sparkles } from 'lucide-react';
 
 type View = 'shop' | 'checkout';
 
@@ -49,46 +51,60 @@ function ShoppingApp() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <Header 
         onCartClick={() => setCartOpen(true)}
         onSearchChange={setSearchTerm}
       />
       
-      <main className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <HeroSection />
+      
+      <main className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24">
-              <CategoryFilter
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onCategoryChange={setSelectedCategory}
-                productCounts={productCounts}
-              />
-            </div>
+            <CategoryFilter
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+              productCounts={productCounts}
+            />
           </div>
 
           {/* Products Grid */}
           <div className="lg:col-span-3">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">
-                {selectedCategory ? `${selectedCategory}` : 'All Electronics'}
-              </h2>
-              <p className="text-muted-foreground">
-                {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
-                {searchTerm && ` for "${searchTerm}"`}
+            <div className="mb-8 animate-slide-up">
+              <div className="flex items-center mb-4">
+                <Sparkles className="h-6 w-6 text-primary mr-2" />
+                <h2 className="text-4xl font-bold font-display text-gradient">
+                  {selectedCategory ? `${selectedCategory}` : 'Featured Electronics'}
+                </h2>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                {filteredProducts.length} premium product{filteredProducts.length !== 1 ? 's' : ''} 
+                {searchTerm && ` matching "${searchTerm}"`}
               </p>
             </div>
 
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground text-lg">No products found</p>
+              <div className="text-center py-20 animate-fade-in">
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <Sparkles className="h-16 w-16 text-muted-foreground" />
+                </div>
+                <h3 className="text-2xl font-semibold font-display mb-2">No products found</h3>
+                <p className="text-muted-foreground">Try adjusting your search or browse our categories</p>
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProducts.map((product, index) => (
+                  <div 
+                    key={product.id} 
+                    className="animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <ProductCard product={product} />
+                  </div>
                 ))}
               </div>
             )}

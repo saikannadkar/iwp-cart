@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Filter } from 'lucide-react';
 
 interface CategoryFilterProps {
   categories: string[];
@@ -15,16 +17,21 @@ export function CategoryFilter({
   productCounts 
 }: CategoryFilterProps) {
   return (
-    <div className="space-y-4">
-      <h3 className="font-semibold text-lg">Categories</h3>
-      <div className="space-y-2">
+    <Card className="sticky top-24 shadow-lg border-0 bg-gradient-to-br from-card to-card/80 animate-slide-up">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center text-xl font-display">
+          <Filter className="h-5 w-5 mr-2 text-primary" />
+          Categories
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">
         <Button
           variant={selectedCategory === null ? "default" : "ghost"}
-          className="w-full justify-between"
+          className="w-full justify-between h-12 text-left font-medium transition-all duration-200 hover:scale-105"
           onClick={() => onCategoryChange(null)}
         >
           All Products
-          <Badge variant="secondary">
+          <Badge variant="secondary" className="bg-primary/10 text-primary">
             {Object.values(productCounts).reduce((a, b) => a + b, 0)}
           </Badge>
         </Button>
@@ -33,14 +40,16 @@ export function CategoryFilter({
           <Button
             key={category}
             variant={selectedCategory === category ? "default" : "ghost"}
-            className="w-full justify-between"
+            className="w-full justify-between h-12 text-left font-medium transition-all duration-200 hover:scale-105"
             onClick={() => onCategoryChange(category)}
           >
             {category}
-            <Badge variant="secondary">{productCounts[category] || 0}</Badge>
+            <Badge variant="secondary" className="bg-primary/10 text-primary">
+              {productCounts[category] || 0}
+            </Badge>
           </Button>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
