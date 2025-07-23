@@ -1,0 +1,88 @@
+import { Product } from '@/contexts/CartContext';
+import smartphoneImg from '@/assets/smartphone.jpg';
+import laptopImg from '@/assets/laptop.jpg';
+import headphonesImg from '@/assets/headphones.jpg';
+import keyboardImg from '@/assets/keyboard.jpg';
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Premium Smartphone',
+    price: 899.99,
+    image: smartphoneImg,
+    description: 'Latest flagship smartphone with advanced camera system and 5G connectivity',
+    category: 'Smartphones',
+    rating: 4.8,
+    stock: 15,
+  },
+  {
+    id: '2',
+    name: 'Ultra-thin Laptop',
+    price: 1299.99,
+    image: laptopImg,
+    description: 'High-performance laptop with Intel i7 processor and 16GB RAM',
+    category: 'Laptops',
+    rating: 4.7,
+    stock: 8,
+  },
+  {
+    id: '3',
+    name: 'Wireless Headphones',
+    price: 299.99,
+    image: headphonesImg,
+    description: 'Premium noise-cancelling wireless headphones with 30-hour battery',
+    category: 'Audio',
+    rating: 4.9,
+    stock: 23,
+  },
+  {
+    id: '4',
+    name: 'Gaming Keyboard',
+    price: 159.99,
+    image: keyboardImg,
+    description: 'Mechanical RGB gaming keyboard with custom switches',
+    category: 'Accessories',
+    rating: 4.6,
+    stock: 12,
+  },
+  {
+    id: '5',
+    name: 'Pro Smartphone',
+    price: 1199.99,
+    image: smartphoneImg,
+    description: 'Professional smartphone with triple-camera system and 1TB storage',
+    category: 'Smartphones',
+    rating: 4.9,
+    stock: 6,
+  },
+  {
+    id: '6',
+    name: 'Gaming Laptop',
+    price: 1899.99,
+    image: laptopImg,
+    description: 'High-end gaming laptop with RTX 4070 and 32GB RAM',
+    category: 'Laptops',
+    rating: 4.8,
+    stock: 4,
+  },
+  {
+    id: '7',
+    name: 'Studio Headphones',
+    price: 449.99,
+    image: headphonesImg,
+    description: 'Professional studio headphones with flat frequency response',
+    category: 'Audio',
+    rating: 4.7,
+    stock: 18,
+  },
+  {
+    id: '8',
+    name: 'Wireless Keyboard',
+    price: 129.99,
+    image: keyboardImg,
+    description: 'Compact wireless keyboard with backlit keys and long battery life',
+    category: 'Accessories',
+    rating: 4.5,
+    stock: 25,
+  },
+];
