@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to Cart Project for IWP
 
 ## Project info
 
@@ -24,10 +24,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone https://github.com/saikannadkar/iwp-cart.git
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd IWP-Cart
 
 # Step 3: Install the necessary dependencies.
 npm i
